@@ -1,0 +1,19 @@
+{% extends "base_asignaturas.html"%}
+
+{%block titulo%} Crear asignatura {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Crear una asignatura
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la asignatura</h4>
+        {% include 'vistas_asignaturas/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock  %}
