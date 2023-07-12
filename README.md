@@ -4,4 +4,4 @@ Aqui se encuentran el CRUD hecho con Django para la actividad 4 de Desarrollo We
 
 Hecho por el estudiante Hennys Sebastian Tous De Avila - 7501910012
 
-En este espacio se publicara el video explicativo del ejercicio:
+En este espacio se publicara el video explicativo del ejercicio: https://youtu.be/PyYBXD19B64
