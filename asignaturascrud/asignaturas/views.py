@@ -1,12 +1,27 @@
 from turtle import title
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.db.models import Q
 from .models import Asignaturas, Usuarios
 from .forms import AsignaturaForm
+import logging as L
 # Create your views here.
 
 def inicio(request):
-    return HttpResponse("<h1> Bienvenido </h1>")
+    return render(request, 'vistas_usuario/login.html')
+
+def logear_usuario(request):
+    
+    email=request.POST.get('email') 
+    password=request.POST.get('pass')
+    usuario = Usuarios.objects.filter(Q(email=email) & Q(pass_field=password))
+    print(usuario)
+    if not usuario: 
+        print('Verifica que el email o la contraseña sean los correctos')
+        return redirect('login')
+    else:
+        print('Inicio de sesion exitoso')
+        return redirect('asignaturas')
 
 def asignaturas(request):
     asignaturas = Asignaturas.objects.all()
@@ -37,3 +52,5 @@ def filtrar_asignatura(request):
     else:
         asignaturas = Asignaturas.objects.all()
         return render(request, 'vistas_asignaturas/asignaturas.html', {'asignaturas': asignaturas})
+
+
