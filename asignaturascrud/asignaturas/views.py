@@ -23,6 +23,19 @@ def logear_usuario(request):
         print('Inicio de sesion exitoso')
         return redirect('asignaturas')
 
+def recuperar_usuario(request):
+    
+    email=request.GET.get('email') 
+    respuesta=request.GET.get('respuesta')
+    usuario = Usuarios.objects.filter(Q(email=email) & Q(respuesta=respuesta))
+    print(usuario)
+    if not usuario: 
+        print('Verifica que el email o la contraseña sean los correctos')
+        return render(request, )
+    else:
+        print('Inicio de sesion exitoso')
+        return redirect('asignaturas')
+
 def asignaturas(request):
     asignaturas = Asignaturas.objects.all()
     return render(request, 'vistas_asignaturas/asignaturas.html', {'asignaturas': asignaturas})
